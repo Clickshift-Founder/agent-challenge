@@ -217,11 +217,12 @@ Each thought is typed: `WAKE`, `READ`, `THINK`, `DECIDE`, `RESULT`, `RISK`, `SLE
 
 ## Built By
 
-**ClickShift** — Building the intelligence that powers autonomous agents onchain.
+**Emmanuel Ohanwe** — Building the intelligence that powers autonomous agents onchain.
 
-- Website: [clickshift.io](https://clickshift.io)
-- Twitter: [@clickshift_io](https://twitter.com/clickshift_io)
-- GitHub: [github.com/clickshift](https://github.com/clickshift)
+- Website:         [clickshift.io](https://clickshift.io)
+- My Twitter:      [@emmanuel_ohanwe](https://twitter.com/emmanuel_ohanwe)
+- Company Twitter: [@clickshifhq](https://twitter.com/clickshifthq)
+- GitHub:          [https://github.com/Clickshift-Founder/agent-challenge](https://github.com/Clickshift-Founder/agent-challenge)
 
 ---
 

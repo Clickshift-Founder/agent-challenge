@@ -17,7 +17,7 @@
           "PORT": "3000",
           "NODE_ENV": "production",
           "LOG_LEVEL": "info",
-          "OPENAI_API_KEY": "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",
+          "OPENAI_API_KEY": "YOUR_OPENAIKEY",
           "OPENAI_SMALL_MODEL": "gpt-4o-mini",
           "OPENAI_LARGE_MODEL": "gpt-4o-mini",
           "PGLITE_DATA_DIR": "/app/.eliza/.elizadb",
