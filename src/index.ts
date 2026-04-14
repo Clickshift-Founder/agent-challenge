@@ -1,42 +1,24 @@
-/**
- * Custom Plugin Entry Point
- *
- * This file is where you can define custom actions, providers, and evaluators
- * for your ElizaOS agent. Add your logic here and reference this plugin in
- * your character file.
- *
- * ElizaOS Plugin Docs: https://elizaos.github.io/eliza/docs/core/plugins
- */
+import { logger, type IAgentRuntime, type Project, type ProjectAgent } from '@elizaos/core';
+import { defiIntelligencePlugin } from './plugins/defi-intelligence/index.ts';
+import { character } from './character.ts';
 
-import { type Plugin } from "@elizaos/core";
+// @ts-ignore
+import openaiPlugin from '@elizaos/plugin-openai';
 
-/**
- * Example custom action.
- * Replace this with your own action logic.
- */
-const exampleAction = {
-  name: "EXAMPLE_ACTION",
-  description: "An example action — replace with your own.",
-  similes: ["DEMO", "SAMPLE"],
-  validate: async () => true,
-  handler: async (_runtime: unknown, message: { content: { text: string } }) => {
-    console.log("Custom action triggered with message:", message.content.text);
-    return true;
-  },
-  examples: [],
+const initCharacter = ({ runtime }: { runtime: IAgentRuntime }) => {
+  logger.info('Initializing ClickShift Alpha agent');
+  logger.info({ name: character.name }, 'Agent name:');
 };
 
-/**
- * Your custom plugin.
- * Add this plugin's name to the `plugins` array in your character file
- * to activate it.
- */
-export const customPlugin: Plugin = {
-  name: "custom-plugin",
-  description: "My custom ElizaOS plugin",
-  actions: [exampleAction],
-  providers: [],
-  evaluators: [],
+export const projectAgent: ProjectAgent = {
+  character,
+  init: async (runtime: IAgentRuntime) => await initCharacter({ runtime }),
+  plugins: [openaiPlugin, defiIntelligencePlugin],
 };
 
-export default customPlugin;
+const project: Project = {
+  agents: [projectAgent],
+};
+
+export { character } from './character.ts';
+export default project;

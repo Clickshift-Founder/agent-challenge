@@ -1,0 +1,119 @@
+/* ClickShift Alpha — Global Styles
+ *
+ * Design: Monospace-forward DeFi terminal aesthetic.
+ * Dark by default, respects system preference for light mode.
+ */
+
+:root {
+  --ts-bg: #0c0c0e;
+  --ts-surface: #141418;
+  --ts-surface-hover: #1a1a20;
+  --ts-border: #26262e;
+  --ts-text: #e8e6e0;
+  --ts-muted: #6b6a65;
+  --ts-accent: #5dcaa5;
+  --ts-accent2: #afa9ec;
+  --ts-user-bg: #1e3a2f;
+  --ts-user-border: #2a5040;
+  --ts-agent-bg: #18181e;
+  --ts-agent-border: #28282e;
+  --ts-danger: #f09595;
+  --ts-warning: #f0997b;
+  --ts-font: "SF Mono", "Fira Code", "JetBrains Mono", "Cascadia Code",
+    ui-monospace, monospace;
+  --ts-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+    sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --ts-bg: #f5f4f0;
+    --ts-surface: #ffffff;
+    --ts-surface-hover: #f0efeb;
+    --ts-border: #e0ddd5;
+    --ts-text: #1a1a18;
+    --ts-muted: #8a8880;
+    --ts-user-bg: #e5f5ee;
+    --ts-user-border: #c0e8d5;
+    --ts-agent-bg: #fafaf8;
+    --ts-agent-border: #eae8e2;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--ts-font);
+  background: var(--ts-bg);
+  color: var(--ts-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input:focus,
+button:focus-visible {
+  outline: 2px solid var(--ts-accent);
+  outline-offset: 2px;
+}
+
+input:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ts-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ts-muted);
+}
+
+/* Animations */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dotPulse {
+  0%,
+  60%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(93, 202, 165, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(93, 202, 165, 0);
+  }
+}

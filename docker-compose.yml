@@ -1,0 +1,40 @@
+# ══════════════════════════════════════════════════════════════
+# ClickShift Alpha — Local Development Docker Compose
+#
+# Usage:
+#   docker compose up --build        # Build and start
+#   docker compose up -d             # Start in background
+#   docker compose logs -f           # Tail logs
+#   docker compose down              # Stop
+# ══════════════════════════════════════════════════════════════
+
+services:
+  clickshift-alpha:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: clickshift-alpha
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - LOG_LEVEL=debug
+      - NODE_ENV=development
+      # Use Nosana-hosted endpoint (free)
+      - OLLAMA_API_URL=https://3yt39qx97wc9hqwwmylrphi4jsxrngjzxnjakkybnxbw.node.k8s.prd.nos.ci/api
+      - MODEL_NAME_AT_ENDPOINT=qwen3:8b
+      - PGLITE_DATA_DIR=/app/.eliza/.elizadb
+      - SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+    volumes:
+      # Persist agent database between restarts
+      - eliza-data:/app/.eliza
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+volumes:
+  eliza-data:
